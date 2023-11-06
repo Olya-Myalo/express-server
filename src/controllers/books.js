@@ -3,7 +3,7 @@ const Book = require("../models/book");
 const getBooks = (request, response) => {
     return Book.find({}).then(
     (books) => { response.status(200).send(books) }
-    ).catch(error => response.status(500).send(error.massage))
+    ).catch(error => response.status(500).send(error.message))
 };
 
 const getBook = (request, response) => {
@@ -14,13 +14,13 @@ const getBook = (request, response) => {
     } else {
       response.status(200).send(book);
     }
-  }).catch(error => response.status(500).send(error.massage))
+  }).catch(error => response.status(500).send(error.message))
 };
 
 const createBook = (request, response) => {
     return Book.create({ ...request.body }).then(
         (book) => { response.status(201).send(book) }
-    ).catch(error => response.status(500).send(error.massage))
+    ).catch(error => response.status(500).send(error.message))
 };
 
 const updateBook = (request, response) => {
@@ -32,7 +32,7 @@ const updateBook = (request, response) => {
         } else {
             response.status(200).send(book);
         }
-    }).catch(error => response.status(500).send(error.massage))
+    }).catch(error => response.status(500).send(error.message))
 };
 
 const deleteBook = (request, response) => {
