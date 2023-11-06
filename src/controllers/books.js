@@ -25,7 +25,7 @@ const createBook = (request, response) => {
 
 const updateBook = (request, response) => {
     const { book_id } = request.params;
-    return Book.findByIdAndUpdate(book_id)
+    return Book.findByIdAndUpdate(book_id, { ...request.body })
     .then((book) => {
         if (!book) {
             response.status(404).send("Book not found");
