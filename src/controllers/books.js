@@ -26,14 +26,17 @@ const createBook = (request, response) => {
 const updateBook = (request, response) => {
     const { book_id } = request.params;
     return Book.findByIdAndUpdate(book_id, { ...request.body })
-    .then((book) => {
-        if (!book) {
-            response.status(404).send("Book not found");
-        } else {
-            response.status(200).send(book);
-        }
-    }).catch(error => response.status(500).send(error.message))
-};
+        .then((book) => {
+            if (!book) {
+                response.status(404).send("Book not found");
+            } else {
+                response.status(200).send(book);
+            }
+        })
+        .catch((error) => {
+            response.status(500).send(error.message);
+        });
+    };
 
 const deleteBook = (request, response) => {
     const { book_id } = request.params;
